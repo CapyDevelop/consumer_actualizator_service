@@ -15,7 +15,7 @@ coalition_service_stub = coalition_pb2_grpc.CoalitionServiceStub(coalition_servi
 def callback(ch, method, properties, body):
     message_body = body.decode('utf-8')
     data = json.loads(message_body)
-    request = coalition_pb2.SetCoalitionMemberRequest(login=data["login"], school_user_id=data["school_user_id"])
+    request = coalition_pb2.SetCoalitionMemberRequest(login=data["login"], school_user_id=data["school_user_id"], tribe=data["tribe"])
     response = coalition_service_stub.set_coalition_member(request)
     if response.status != 0:
         print("UNSUCCESS")
